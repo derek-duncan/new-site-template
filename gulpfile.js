@@ -5,7 +5,7 @@ var _ = require('lodash');
 var autoprefixer = require('autoprefixer');
 var mqpacker = require('css-mqpacker');
 var csswring = require('csswring');
-var browserSync = require('browser-sync').create();
+var livereload = require('gulp-livereload');
 var notify = require('gulp-notify');
 var rename = require('gulp-rename');
 var imageOptim = require('gulp-imageoptim');
@@ -28,9 +28,6 @@ var apps = [{
       './public/styles/**/*.pcss',
       '!./public/styles/build/*.css'
     ]
-  },
-  views: {
-    src: './views/**/*.jade'
   },
   images: {
     src: [
@@ -69,7 +66,7 @@ var stylesTask = function(app) {
       extname: '.css'
     }))
     .pipe(gulp.dest(app.styles.dest))
-    .pipe(browserSync.stream())
+    .pipe(livereload())
     .pipe(notify('Compiled styles :)'));
 };
 
@@ -104,16 +101,11 @@ gulp.task('images', function() {
 });
 
 gulp.task('default', ['styles', 'scripts'], function() {
-  browserSync.init({
-    open: 'external',
-    proxy: 'localhost:3100',
-    port: 3100
-  });
+
+  livereload.listen();
 
   _.each(apps, function(app) {
     gulp.watch(app.styles.watch, ['styles']);
-    gulp.watch(app.views.src).on('change', browserSync.reload);
-
     gulp.watch(app.scripts.watch, ['scripts']);
   });
 });
