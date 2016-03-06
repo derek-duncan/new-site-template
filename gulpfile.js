@@ -1,87 +1,86 @@
-var gulp = require('gulp');
-var postcss = require('gulp-postcss');
-var _ = require('lodash');
+const gulp = require('gulp');
+const postcss = require('gulp-postcss');
+const _ = require('lodash');
 
-var autoprefixer = require('autoprefixer');
-var mqpacker = require('css-mqpacker');
-var csswring = require('csswring');
-var livereload = require('gulp-livereload');
-var notify = require('gulp-notify');
-var rename = require('gulp-rename');
-var imageOptim = require('gulp-imageoptim');
-var uglify = require('gulp-uglify');
-var minifyCss = require('gulp-minify-css');
-var path = require('path');
-var webpack = require('webpack-stream');
+const autoprefixer = require('autoprefixer');
+const mqpacker = require('css-mqpacker');
+const csswring = require('csswring');
+const livereload = require('gulp-livereload');
+const notify = require('gulp-notify');
+const rename = require('gulp-rename');
+const imageOptim = require('gulp-imageoptim');
+const uglify = require('gulp-uglify');
+const minifyCss = require('gulp-minify-css');
+const webpack = require('webpack-stream');
 
-var webpackConfig = require('./webpack.config.js');
+const webpackConfig = require('./webpack.config.js');
 
-var apps = [{
+const apps = [{
   name: 'assets',
   styles: {
     src: [
       './public/styles/**/[^_]*.pcss',
-      '!./public/styles/build/*.css'
+      '!./public/styles/build/*.css',
     ],
     dest: './public/styles/build',
     watch: [
       './public/styles/**/*.pcss',
-      '!./public/styles/build/*.css'
-    ]
+      '!./public/styles/build/*.css',
+    ],
   },
   images: {
     src: [
-      './public/img/**/*'
-    ]
+      './public/img/**/*',
+    ],
   },
   scripts: {
     src: [
       './public/scripts/**/*.js',
-      '!./public/scripts/build/*.js'
+      '!./public/scripts/build/*.js',
     ],
     dest: './public/scripts/build',
     watch: [
       './public/scripts/**/*.js',
-      '!./public/scripts/build/*.js'
-    ]
-  }
+      '!./public/scripts/build/*.js',
+    ],
+  },
 }];
 
-var stylesTask = function(app) {
-  var processors = [
-      require('postcss-import'),
-      require('postcss-nested'),
-      require('postcss-custom-properties'),
-      require('postcss-each'),
-      require('postcss-custom-media'),
-      autoprefixer({ browsers: ['last 2 version'] }),
-      mqpacker,
-      csswring({ removeAllComments: true })
+const stylesTask = function stylesTask(app) {
+  const processors = [
+    require('postcss-import'),
+    require('postcss-nested'),
+    require('postcss-custom-properties'),
+    require('postcss-each'),
+    require('postcss-custom-media'),
+    autoprefixer({ browsers: ['last 2 version'] }),
+    mqpacker,
+    csswring({ removeAllComments: true }),
   ];
   gulp.src(app.styles.src)
     .pipe(postcss(processors))
     .pipe(minifyCss())
     .pipe(rename({
       suffix: '.min',
-      extname: '.css'
+      extname: '.css',
     }))
     .pipe(gulp.dest(app.styles.dest))
     .pipe(livereload())
     .pipe(notify('Compiled styles :)'));
 };
 
-gulp.task('styles', function() {
-  _.each(apps, function(app) {
+gulp.task('styles', () => {
+  _.each(apps, (app) => {
     stylesTask(app);
   });
 });
 
-gulp.task('scripts', function() {
-  _.each(apps, function(app) {
+gulp.task('scripts', () => {
+  _.each(apps, (app) => {
     gulp.src(app.scripts.src)
       .pipe(uglify())
       .pipe(rename({
-        suffix: '.min'
+        suffix: '.min',
       }))
       .pipe(webpack(webpackConfig))
       .pipe(gulp.dest(app.scripts.dest))
@@ -89,22 +88,20 @@ gulp.task('scripts', function() {
   });
 });
 
-gulp.task('images', function() {
-  _.each(apps, function(app) {
+gulp.task('images', () => {
+  _.each(apps, (app) => {
     gulp.src(app.images.src)
       .pipe(imageOptim.optimize())
-      .pipe(gulp.dest(function(data) {
-        return data.base;
-      }))
+      .pipe(gulp.dest((data) => data.base))
       .pipe(notify('Compressed images :)'));
   });
 });
 
-gulp.task('default', ['styles', 'scripts'], function() {
+gulp.task('default', ['styles', 'scripts'], () => {
 
   livereload.listen();
 
-  _.each(apps, function(app) {
+  _.each(apps, (app) => {
     gulp.watch(app.styles.watch, ['styles']);
     gulp.watch(app.scripts.watch, ['scripts']);
   });

@@ -2,6 +2,7 @@
   'extends': 'airbnb/base',
   'rules': {
     'quotes': [1, 'single'],
-    'semi': [2, 'always']
+    'semi': [2, 'always'],
+    'padded-blocks': 0,
   }
 }
