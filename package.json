@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "pm2 start server.js --name 'template' --watch --ignore-watch='node_modules .git views public'",
-    "stop": "pm2 stop template",
-    "remove": "pm2 delete template"
+    "prestart": "pm2 delete app",
+    "start": "pm2 start index.js --name 'app' --watch --ignore-watch='node_modules .git views public'",
+    "poststart": "pm2 logs app",
+    "stop": "pm2 delete app"
   },
   "keywords": [],
   "author": "",

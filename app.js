@@ -11,8 +11,7 @@ import http from 'http';
 
 import config from './config.js';
 
-import controller from './controllers/controller.js';
-import actions from './actions/actions.js';
+import controller from './lib/controllers/controller.js';
 
 // Main app
 const app = new Koa();
@@ -41,10 +40,10 @@ app.use(controller.routes());
 app.use(controller.allowedMethods());
 
 // Serve static files
-let publicDirectory = path.join(__dirname, 'public');
-let cacheOptions = {
+const publicDirectory = path.join(__dirname, 'public');
+const cacheOptions = {
   maxAge: 60 * 60 * 24,
-  gzip: true
+  gzip: true,
 };
 app.use(serve(publicDirectory, cacheOptions));
 
@@ -52,8 +51,6 @@ app.use(compress());
 
 const server = http.createServer(app.callback());
 server.listen(config.koa.port);
-console.log(`listening on port ${config.koa.port}`);
+console.log(`listening on port ${config.koa.port}`); // eslint-disable-line no-console
 
 export default app;
-
-
