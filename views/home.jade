@@ -3,9 +3,17 @@ extends ./template.jade
 block body
   h4.title.title--small Most Popular
 
-  .cardBlock
-    h2.cardBlock-title.title What My Dreams Were as a Kid
-    span.cardBlock-subtitle 30 Items
-    .cardBlock-author.authorCard
-      img.authorCard-img(src="http://placehold.it/30x30" width="30" height="30")
-      span.authorCard-name Beyonce
+  .row.between-xs
+    .col-xs-4
+      .c-item
+        .c-item__icon 1
+        .c-item__body
+          h2.c-item__title A weekend long trip to Saint Lewis.
+          .c-item__tasks.row
+            a.c-item__task.button.button--primary Join
+            a.c-item__task.button.button--slate Cheer
+          .c-item__details
+            ul
+              li.o-icon You started this goal.
+              li.o-icon Tommy L. wants to join.
+              li.o-icon Deanna D. cheered you on.
