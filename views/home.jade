@@ -1,10 +1,8 @@
 extends ./template.jade
 
 block body
-  h4.title.title--small Most Popular
-
   .list-view.o-wrapper.o-globalwidth
-    .list-view__header.row
+    .list-view__header.row.middle-xs
       .list-view__details.col-xs
         h2.list-view__name.u-m0 Summer 2016
         p.list-view__description.u-lighttext.u-m0 Really small text that talks more about this list.
@@ -14,23 +12,23 @@ block body
             h3.block-profile__name Robert Lee
             p.block-profile__tagline Adventurer of the skies
         .list-view__actions
-          a.list-view__action.button.button--primary Join
-          a.list-view__action.button.button--slate Cheer
+          a.list-view__action.button.button--outline.button--primary Join
+          a.list-view__action.button.button--outline.button--slate Cheer
       .list-view__participants.col-xs
         h5.smalltitle.u-m0 Participents
         .avatar-list
           each val in [1, 2, 3, 4]
             img.avatar-list__image(src='http://placehold.it/100x100')
     .list-view__body.row
-      each val in [1, 2]
+      each val in [1, 2, 3, 4]
         .col-xs-6
           .block-list
-            .block-list__icon 1
+            .block-list__icon #{val}
             .block-list__body
               h2.block-list__title A weekend long trip to Saint Lewis.
               .block-list__tasks.row
-                a.block-list__task.button.button--primary Join
-                a.block-list__task.button.button--slate Cheer
+                a.block-list__task.button.button--outline.button--primary Join
+                a.block-list__task.button.button--outline.button--slate Cheer
               .block-list__details
                 ul
                   li.o-flag

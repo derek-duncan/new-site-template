@@ -21,6 +21,7 @@
 .block-profile__name {
   margin: 0;
   font-size: 2rem;
+  font-weight: 400;
   line-height: 1;
 }
 
@@ -39,7 +40,9 @@
 }
 
 .list-view__header {
+  padding: var(--space-large) 0;
   margin: 0 0 var(--space-large);
+  border-bottom: 1px solid var(--color-gray--light);
 }
 
 .list-view__name {
@@ -73,10 +76,11 @@
   position: relative;
   display: flex;
   flex-flow: row nowrap;
-  margin: 0 0 var(--space-normal);
+  margin: 0 0 var(--space-large);
 }
 
 .block-list__icon {
+  flex: 0;
   display: block;
   padding: 0 var(--space-medium) 0 0;
   font-size: 2.4rem;
@@ -131,25 +135,39 @@
 .button {
   display: inline-block;
   padding: 0.75rem 1.40rem 0.60rem;
-  border: 1px solid var(--color-gray--light);
   border-radius: 2.25rem;
-  background-color: #fff;
   font-size: var(--fontSize-normal);
   line-height: 1;
-  color: var(--color-text);
+  background-color: var(--color-primary);
+  color: #fff;
   cursor: pointer;
-  transition: border-color 250ms;
+  transition: background-color 250ms,
+              border-color 250ms;
 
   &:hover {
-    border-color: var(--color-text);
+    background-color: var(--color-primary--dark);
   }
 }
 
-.button--round {
-  border-radius: 50%;
+.button--primary {
+  color: #fff;
+  background-color: var(--color-primary);
+
+  &:hover {
+    background-color: var(--color-primary--dark);
+  }
 }
 
-.button--primary {
+.button--slate {
+  color: #fff;
+  background-color: var(--color-slate);
+
+  &:hover {
+    background-color: var(--color-slate--dark);
+  }
+}
+
+.button--outline.button--primary {
   color: var(--color-primary);
 
   &:hover {
@@ -157,12 +175,26 @@
   }
 }
 
-.button--slate {
+.button--outline.button--slate {
   color: var(--color-slate);
 
   &:hover {
     border-color: var(--color-slate);
   }
+}
+
+.button--outline {
+  border: 1px solid var(--color-gray--light);
+  background-color: #fff;
+
+  &:hover {
+    border-color: var(--color-text);
+    background-color: #fff;
+  }
+}
+
+.button--circle {
+  border-radius: 50%;
 }
 
 .icon {
