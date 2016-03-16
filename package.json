@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prestart": "pm2 delete app",
     "start": "pm2 start index.js --name 'app' --watch --ignore-watch='node_modules .git views public'",
     "poststart": "pm2 logs app",
     "stop": "pm2 delete app"

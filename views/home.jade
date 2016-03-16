@@ -3,17 +3,26 @@ extends ./template.jade
 block body
   h4.title.title--small Most Popular
 
-  .row.between-xs
-    .col-xs-4
-      .c-item
-        .c-item__icon 1
-        .c-item__body
-          h2.c-item__title A weekend long trip to Saint Lewis.
-          .c-item__tasks.row
-            a.c-item__task.button.button--primary Join
-            a.c-item__task.button.button--slate Cheer
-          .c-item__details
-            ul
-              li.o-icon You started this goal.
-              li.o-icon Tommy L. wants to join.
-              li.o-icon Deanna D. cheered you on.
+  .o-wrapper.o-globalwidth
+    .row
+      .col-xs-6
+        .c-item
+          .c-item__icon 1
+          .c-item__body
+            h2.c-item__title A weekend long trip to Saint Lewis.
+            .c-item__tasks.row
+              a.c-item__task.c-button.c-button--primary Join
+              a.c-item__task.c-button.c-button--slate Cheer
+            .c-item__details
+              ul
+                li.o-flag
+                  span.c-icon.c-icon--car
+                  p.o-flag__body You started this goal.
+                li.o-flag
+                  img.u-circle.o-flag__image(src='http://placehold.it/26x26' width='26' height='26')
+                  p.o-flag__body Tommy L. wants to join.
+                li.o-flag
+                  img.u-circle.o-flag__image(src='http://placehold.it/26x26' width='26' height='26')
+                  p.o-flag__body Deanna D. cheered you on.
+            .c-item__actions
+              a.c-button.c-button--primary See more
