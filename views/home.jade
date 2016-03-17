@@ -3,25 +3,37 @@ extends ./template.jade
 block body
   .site-header-placeholder
   header.site-header
-    img.site-header__logo(src='/images/logo.png')
+    .site-header__inner.o-globalwidth.row.middle-xs.between-xs
+      .site-header__nav
+        a.site-header__nav-item(href='') Popular
+        a.site-header__nav-item(href='') Community
+      .site-header__logo
+        img(src='/images/logo.png')
+      .site-header__nav
+        a.site-header__nav-item(href='') My Lists
+        a.site-header__nav-item(href='') Profile
   .list-view.o-wrapper.o-globalwidth
     .list-view__header.row.middle-xs
       .list-view__details.col-xs
         h2.list-view__name.u-m0 Summer 2016
         p.list-view__description.u-lighttext.u-m0 Really small text that talks more about this list.
         .list-view__profile.block-profile
-          img.block-profile__image(src='http://placehold.it/50x50')
+          img.block-profile__image(src='https://unsplash.it/50/50/?random')
           .block-profile__body
             h3.block-profile__name Robert Lee
             p.block-profile__tagline Adventurer of the skies
         .list-view__actions
-          a.list-view__action.button.button--outline.button--primary Join
-          a.list-view__action.button.button--outline.button--slate Cheer
+          a.list-view__action.button.button--outline.button--primary
+            span.icon.icon--small.icon--plus
+            span &nbsp;&nbsp;Join
+          a.list-view__action.button.button--outline.button--slate
+            span.icon.icon--small.icon--thumb
+            span &nbsp;&nbsp;Cheer
       .list-view__participants.col-xs
         h5.smalltitle.u-m0 Participents
         .avatar-list
           each val in [1, 2, 3, 4]
-            img.avatar-list__image(src='http://placehold.it/100x100')
+            img.avatar-list__image(src='https://unsplash.it/100/100/?random=#{val}')
     .list-view__body.row
       each val in [1, 2, 3, 4]
         .col-xs-6
@@ -30,18 +42,20 @@ block body
             .block-list__body
               h2.block-list__title A weekend long trip to Saint Lewis.
               .block-list__tasks.row
-                a.block-list__task.button.button--outline.button--primary Join
-                a.block-list__task.button.button--outline.button--slate Cheer
+                a.block-list__task.button.button--outline.button--primary.button--circle
+                  span.icon.icon--small.icon--plus
+                a.block-list__task.button.button--outline.slate.button--circle
+                  span.icon.icon--small.icon--thumb
               .block-list__details
                 ul
                   li.o-flag
-                    span.icon.icon--car
+                    span.o-flag__image.icon.icon--car
                     p.o-flag__body You started this goal.
                   li.o-flag
-                    img.u-circle.o-flag__image(src='http://placehold.it/26x26' width='26' height='26')
+                    img.u-circle.o-flag__image(src='https://unsplash.it/26/26/?random=#{val}' width='26' height='26')
                     p.o-flag__body Tommy L. wants to join.
                   li.o-flag
-                    img.u-circle.o-flag__image(src='http://placehold.it/26x26' width='26' height='26')
+                    img.u-circle.o-flag__image(src='https://unsplash.it/26/26/?random=#{val}' width='26' height='26')
                     p.o-flag__body Deanna D. cheered you on.
               .block-list__actions
                 a.button.button--primary See more
