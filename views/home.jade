@@ -1,17 +1,7 @@
 extends ./template.jade
 
 block body
-  .site-header-placeholder
-  header.site-header
-    .site-header__inner.o-globalwidth.row.middle-xs.between-xs
-      .site-header__nav
-        a.site-header__nav-item(href='') Popular
-        a.site-header__nav-item(href='') Community
-      .site-header__logo
-        img(src='/images/logo.png')
-      .site-header__nav
-        a.site-header__nav-item(href='') My Lists
-        a.site-header__nav-item(href='') Profile
+  pre= lists
   .list-view.o-wrapper.o-globalwidth
     .list-view__header.row.middle-xs
       .list-view__details.col-xs
@@ -58,4 +48,4 @@ block body
                     img.u-circle.o-flag__image(src='https://unsplash.it/26/26/?random=#{val}' width='26' height='26')
                     p.o-flag__body Deanna D. cheered you on.
               .block-list__actions
-                a.button.button--primary See more
+                a.button.button--primary Show older
