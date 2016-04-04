@@ -6,6 +6,7 @@ import logger from 'koa-logger';
 import serve from 'koa-static-cache';
 import json from 'koa-json';
 import compress from 'koa-compress';
+import bodyparser from 'koa-bodyparser';
 import path from 'path';
 import http from 'http';
 import fs from 'fs';
@@ -43,6 +44,7 @@ fs.readdirSync(modelsDir).forEach(modelFilename => {
 // Setup Koa modules
 app.use(logger());
 app.use(json());
+app.use(bodyparser());
 
 // Routes
 app.use(controller.routes());

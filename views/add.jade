@@ -1,0 +1,14 @@
+extends ./template.jade
+
+block body
+  .o-wrapper.o-globalwidth
+    h1 Manage your goals
+    form(method='post' action='/goals/add')
+      label(for='name') Name
+      br
+      input#name(name='name' type='text' placeholder='Name of goal')
+      button.button(type='submit') Add goal
+
+    ul
+      each goal in goals
+        li= goal.name
