@@ -2,7 +2,7 @@ extends ./template.jade
 
 block body
   .o-wrapper.o-globalwidth
-    h1 Manage your goals
+    h1 Your Goals
     form(method='post' action='/goals/add')
       label(for='name') Name
       br
@@ -11,4 +11,8 @@ block body
 
     ul
       each goal in goals
-        li= goal.name
+        li
+          form(method='post' action='/goals/#{goal._id}')
+            span= goal.name
+            span &nbsp;|&nbsp;
+            button.button.button--outline(type='submit') Remove
