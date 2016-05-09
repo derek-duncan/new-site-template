@@ -1,0 +1,8 @@
+extends ../template.jade
+
+block body
+  .o-wrapper.o-globalwidth
+    h1 Users
+    each user in users
+      li
+        pre= user

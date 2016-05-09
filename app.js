@@ -7,6 +7,8 @@ import serve from 'koa-static-cache';
 import json from 'koa-json';
 import compress from 'koa-compress';
 import bodyparser from 'koa-bodyparser';
+import session from 'koa-session';
+import passport from 'koa-passport';
 import path from 'path';
 import http from 'http';
 import fs from 'fs';
@@ -44,7 +46,15 @@ fs.readdirSync(modelsDir).forEach(modelFilename => {
 // Setup Koa modules
 app.use(logger());
 app.use(json());
+
 app.use(bodyparser());
+
+app.keys = ['secret'];
+app.use(session(app));
+
+require('./lib/util/auth.js');
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Routes
 app.use(controller.routes());
