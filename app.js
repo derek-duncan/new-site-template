@@ -16,7 +16,7 @@ import mongoose from 'mongoose';
 
 import config from './config.js';
 
-import controller from './lib/controllers/controller.js';
+import controllers from './lib/controllers/controllers';
 
 // Main app
 const app = new Koa();
@@ -57,8 +57,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-app.use(controller.routes());
-app.use(controller.allowedMethods());
+app.use(controllers.routes());
+app.use(controllers.allowedMethods());
 
 // Serve static files
 const publicDirectory = path.join(__dirname, 'public');
