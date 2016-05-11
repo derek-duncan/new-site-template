@@ -35,12 +35,12 @@ const apps = [{
   },
   scripts: {
     src: [
-      './public/scripts/**/*.js',
+      './public/scripts/**/*.{js,jsx}',
       '!./public/scripts/build/*.js',
     ],
     dest: './public/scripts/build',
     watch: [
-      './public/scripts/**/*.js',
+      './public/scripts/**/*.{js,jsx}',
       '!./public/scripts/build/*.js',
     ],
   },
@@ -78,7 +78,7 @@ gulp.task('styles', () => {
 gulp.task('scripts', () => {
   _.each(apps, (app) => {
     gulp.src(app.scripts.src)
-      .pipe(uglify())
+      // .pipe(uglify())
       .pipe(rename({
         suffix: '.min',
       }))
