@@ -1,0 +1,10 @@
+extends ../template.jade
+
+block body
+  h2 Playlists
+
+  each playlist in playlists
+    h3= playlist.label
+
+  if !playlists.length
+    p No playlists available.

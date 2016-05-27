@@ -3,7 +3,7 @@ html(lang="en")
   head
     meta(charset="utf-8")
     meta(http-equiv="x-ua-compatible" content="ie=edge")
-    title #{title} | Our Buckets
+    title #{title}
     meta(name="description" content="")
     meta(name="viewport" content="width=device-width, initial-scale=1")
 
@@ -11,17 +11,6 @@ html(lang="en")
     block styles
 
   body
-    .site-header-placeholder
-    header.site-header
-      .site-header__inner.o-globalwidth.row.middle-xs.between-xs
-        .site-header__nav
-          a.site-header__nav-item(href='') Popular
-          a.site-header__nav-item(href='') Community
-        .site-header__logo
-          img(src='/images/logo.png')
-        .site-header__nav
-          a.site-header__nav-item(href='') My Lists
-          a.site-header__nav-item(href='') Profile
     block body
     #app
 

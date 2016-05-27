@@ -1,24 +1,23 @@
 extends ../template.jade
 
 block body
-  .o-wrapper.o-globalwidth
-    h1 Join
-    form(method='post' action='/users/add')
-      fieldset
-        label(for='fname') First name
-        br
-        input#fname(name='fname' type='text' placeholder='First name')
-      fieldset
-        label(for='lname') Last name
-        br
-        input#lname(name='lname' type='text' placeholder='Last name')
-      fieldset
-        label(for='email') Email
-        br
-        input#email(name='email' type='text' placeholder='Email')
-      fieldset
-        label(for='password') Password
-        br
-        input#password(name='password' type='text' placeholder='Password')
+  h1 Join
+  form(method='post' action='/users/add')
+    fieldset
+      label(for='fname') First name
+      br
+      input#fname(name='fname' type='text' placeholder='First name')
+    fieldset
+      label(for='lname') Last name
+      br
+      input#lname(name='lname' type='text' placeholder='Last name')
+    fieldset
+      label(for='email') Email
+      br
+      input#email(name='email' type='text' placeholder='Email')
+    fieldset
+      label(for='password') Password
+      br
+      input#password(name='password' type='text' placeholder='Password')
 
-      button.button(type='submit') Signup
+    button.button(type='submit') Signup

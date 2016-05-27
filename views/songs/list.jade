@@ -1,0 +1,11 @@
+extends ../template.jade
+
+block body
+  h2 Songs
+
+  each song in songs
+    h3= song.name
+    h6= song.artist
+
+  if !songs.length
+    p No songs available.
